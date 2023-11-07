@@ -10,21 +10,24 @@ export default function Publicaciones() {
       <h1>Publicaciones</h1>
       
       <Outlet/>
-
+     
       <ul>
         {dataPublicaciones.map(post => (
           <PublicacionLink key={post.slug} post={post}/>
          ))}
       </ul>
 
+     <Link to={`/crearPublicacion/`}>Crear post</Link>
+
     </>
   )
 }
 
-function PublicacionLink( {post}){
+function PublicacionLink( {post} ){
   return(
     <li>
       <Link to={`/Publicaciones/${post.slug}`}>{post.titulo}</Link>
     </li>
   )
 }
+

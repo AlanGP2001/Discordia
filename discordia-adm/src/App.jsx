@@ -8,6 +8,7 @@ import { PublicacionesPost } from "./components/Publicaciones/PublicacionesPost"
 import LogoutPage from "./public/Auth/LogoutPage"
 import LoginPage from "./public/Auth/LoginPage"
 import { AuthProvider, AuthRoute } from "./public/Auth/auth"
+import PublicacionCreate from "./components/Publicaciones/PublicacionCreate"
 
 
 
@@ -49,6 +50,14 @@ function App() {
                         }  
                       />
               </Route>
+              <Route 
+                path="/crearPublicacion" 
+                element={
+                  <AuthRoute>
+                    <PublicacionCreate/>
+                  </AuthRoute>
+                } 
+              />
 
               <Route path="/Proyectos"     element={<Proyectos/>} />
 

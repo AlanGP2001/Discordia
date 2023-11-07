@@ -9,7 +9,7 @@ export function PublicacionesPost() {
     const { slug } = useParams();
     const auth = useAuth();
 
-    const post = dataPublicaciones.find(post => post.slug === slug);
+    const post = dataPublicaciones.find(post => post.slug === slug); 
 
     const canDelete = auth.user?.isAdmin || auth.user?.username === post.author;
 
