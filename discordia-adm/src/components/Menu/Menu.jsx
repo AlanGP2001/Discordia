@@ -7,7 +7,7 @@ export function Menu() {
         <ul>
 
              {routes.map((route, index) => (
-                <li key={index}>
+                <li key={route.to}>
                     <NavLink to={route.to} 
                      style={({isActive})=> isActive ? {color:'blue'} : {color : 'white'}}
                     >{route.text}</NavLink>
@@ -46,10 +46,14 @@ routes.push({
     text: 'Inicio'
 })
 routes.push({
-    to: "/Proyectos" ,
-    text: 'Proyectos'
+    to: "/Perfil" ,
+    text: 'Perfil'
 })
 routes.push({
     to: "/Colaboradores", 
     text: 'Colaboradores'
+})
+routes.push({
+    to: "/Publicaciones", 
+    text: 'Publicaciones'
 })
