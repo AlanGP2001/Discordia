@@ -1,10 +1,13 @@
 import React from 'react'
+import { useAuth} from '../../public/Auth/auth'
 
-export default function Perfil() {
+
+
+export function Perfil() {
+  const auth = useAuth()
   return (
-    <>
-      <h1>Perfil</h1>
-    
-    </>
+     <>
+        <h1>Bienvenido: {auth.user?.username}</h1>
+     </>
   )
 }

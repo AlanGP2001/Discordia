@@ -11,7 +11,7 @@ dataPublicaciones.push({
   titulo: 'Publicacion 2',
   slug: 'publicacion-2',
   content: 'Gears of war',
-  author: 'elDani  x2'
+  author: 'macaco'
 })
 
 export { dataPublicaciones};

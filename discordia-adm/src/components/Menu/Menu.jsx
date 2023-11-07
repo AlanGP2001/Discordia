@@ -1,40 +1,26 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { useAuth } from '../../public/Auth/auth';
 
 export function Menu() {
+    const auth = useAuth();
   return (
     <nav>
         <ul>
+             {routes.map((route) => {
 
-             {routes.map((route, index) => (
-                <li key={route.to}>
-                    <NavLink to={route.to} 
-                     style={({isActive})=> isActive ? {color:'blue'} : {color : 'white'}}
-                    >{route.text}</NavLink>
-                </li>
-            ))}
-
-            
-            {/* <li>
-                <Link to="/">Inicio</Link>
-            </li>
-            <li>
-                <Link to="/Actividades">Proyectos</Link>
-            </li>
-            <li>
-                <Link to="/Colaboradores">Colaboradores</Link>
-            </li> */}
-            {/* <li>
-                <NavLink to="/" 
-                 style={({isActive})=> isActive ? {color:'blue'} : {color : 'white'}}
-                >Inicio</NavLink>
-                <NavLink to="/Proyectos" 
-                 style={({isActive})=> isActive ? {color:'blue'} : {color : 'white'}}
-                >Proyectos</NavLink>
-                <NavLink to="/Colaboradores" 
-                 style={({isActive})=> isActive ? {color:'blue'} : {color : 'white'}}
-                >Colaboradores</NavLink>
-            </li> */}
+                        if(route.publicOnly && auth.user) return null; 
+                        if(route.private && !auth.user) return null;
+                    
+                    return (
+                            <li key={route.to}>
+                                <NavLink to={route.to} 
+                                style={({isActive})=> isActive ? {color:'blue'} : {color : 'white'}}
+                                >{route.text}</NavLink>
+                            </li>
+                        )}
+                )
+             } 
         </ul>
     </nav>
   )
@@ -43,17 +29,36 @@ export function Menu() {
 const routes = [];
 routes.push({
     to: '/',
-    text: 'Inicio'
+    text: 'Inicio',
+    private: false,
+    publicOnly: true
 })
 routes.push({
     to: "/Perfil" ,
-    text: 'Perfil'
+    text: 'Perfil',
+    private: true
 })
 routes.push({
     to: "/Colaboradores", 
-    text: 'Colaboradores'
+    text: 'Colaboradores',
+    private: true
 })
 routes.push({
     to: "/Publicaciones", 
-    text: 'Publicaciones'
+    text: 'Publicaciones',
+    private: true
+})
+
+routes.push({
+    to: "/login", 
+    text: 'login',
+    private: false,
+    publicOnly: true
+})
+
+routes.push({
+    to: "/logout", 
+    text: 'logout',
+    private: true,
+    publicOnly: false
 })
