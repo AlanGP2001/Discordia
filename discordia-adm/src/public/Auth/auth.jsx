@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 
 const AuthContext = React.createContext()
@@ -7,10 +7,14 @@ const adminList = ['Aldair','elDani','Admin'];
 
 function AuthProvider({ children }) {
     
+    useEffect(() => {
+       console.log("Se monto el componente AuthProvider")
+    }, [])
+    
     const navigate = useNavigate() /* Hook de navegacion */
 
     /* Creamos  nuevos estados */
-    const [user, setUser] = React.useState(null)
+    const [user, setUser] = React.useState("Aldair")
 
     const login = ({ username }) => { /* Metodo login */
         const isAdmin = adminList.find( admin => admin === username); /* Buscamos si el usuario es admin */
