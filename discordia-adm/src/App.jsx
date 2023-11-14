@@ -10,7 +10,9 @@ import { AuthProvider, AuthRoute } from "./public/Auth/auth"
 import PublicacionCreate from "./components/Publicaciones/PublicacionCreate"
 import { DataProvider } from "./components/Publicaciones/PublicacionContext"
 import Layout from "./components/Layout/Layout"
-
+import Comunidad from "./components/Usuarios/Comunidad"
+import { useNavigate } from 'react-router-dom';
+import RegisterPage from "./public/Auth/RegisterPage"
 
 
 
@@ -35,6 +37,16 @@ function App() {
                     <AuthRoute>
                       <Layout>
                         <Perfil/>
+                      </Layout>
+                    </AuthRoute>
+                  } 
+                />
+                <Route 
+                  path="/Comunidad" 
+                  element={
+                    <AuthRoute>
+                      <Layout>
+                        <Comunidad/>
                       </Layout>
                     </AuthRoute>
                   } 
@@ -79,6 +91,12 @@ function App() {
               <Route path="/login"     element={
                 <Layout>
                   <LoginPage/>
+                </Layout>
+              }/>
+
+              <Route path="/Registro"     element={
+                <Layout>
+                  <RegisterPage/>
                 </Layout>
               }/>
 

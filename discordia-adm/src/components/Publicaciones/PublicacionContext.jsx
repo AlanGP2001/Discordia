@@ -9,10 +9,21 @@ const DataProvider = ({ children }) => {
     const navigate = useNavigate() 
     const [posts, setPosts] = useState(dataPublicaciones);
 
-    const deletePost = (slug) => {
+    const deletePost = (slug, navigate) => {
         const updatedPosts = posts.filter((item) => item.slug !== slug);
         setPosts(updatedPosts);
         navigate('/Publicaciones');
+    };
+    
+    const existPost = (slug) => {
+        
+        const post = posts.find((item) => item.slug === slug);
+        if(post == undefined){
+            
+            navigate('/Publicaciones');
+        }
+
+        
     };
 
     const createPost = (data) => {
@@ -27,7 +38,8 @@ const DataProvider = ({ children }) => {
     const data ={
         posts,
         deletePost,
-        createPost
+        createPost,
+        existPost
     }
 
     return (

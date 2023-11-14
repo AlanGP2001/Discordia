@@ -30,6 +30,12 @@ export default function Header() {
             current: false
         },
         {
+          to: "/Comunidad" ,
+          text: 'Comunidad',
+          private: true,
+          current: false
+      },
+        {
             to: "/Publicaciones", 
             text: 'Publicaciones',
             private: true,
@@ -42,6 +48,13 @@ export default function Header() {
             publicOnly: true,
             current: false
         },
+        {
+          to: "/Registro", 
+          text: 'Registro',
+          private: false,
+          publicOnly: true,
+          current: false
+      },
         {
             to: "/logout", 
             text: 'logout',

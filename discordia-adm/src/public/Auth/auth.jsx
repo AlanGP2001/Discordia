@@ -9,6 +9,7 @@ function AuthProvider({ children }) {
     
     useEffect(() => {
        console.log("Se monto el componente AuthProvider")
+       console.log("contador", 1)
     }, [])
     
     const navigate = useNavigate() /* Hook de navegacion */
