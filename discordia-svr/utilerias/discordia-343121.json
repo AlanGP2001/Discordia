@@ -1,0 +1,14 @@
+{
+	"type": "service_account",
+	"project_id": "discordia-db",
+	"private_key_id": "03d61c10e0f73c6c59f214481f6557f8933a6fbc",
+	"private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCqK3kitYIrfaP3\nFUtiRcrKPK02Zdnto20sqt1guqgxWsv7eJdnywMmQMAw1cBlxkyqAvGH0vcfFcNN\nsUYBuLi28257sQnJNIDnnrYxCc127JECLwmjj709IaeFHqSe7865UokcXzCh1RrU\nw/ExYR+0Gqt2pKkzZYOzkR4A4y4g0kc+COoeu9uP2FaXLvsnY5NOepPlil0vulvV\nj/TpWway3qUofLw+QnKhXESG0r8oEmc+FqLymltSgmfeVEciRz3Enyh08ATsl+qh\nOcVGcbIayCb0KstRjNqVOovvKwMwjvjKhje4InRkiy8jaac6wbI36+unOx5fraSC\n5guWpiYXAgMBAAECggEAP1EXrIt+2LHSDYCV4QX485DqHkB9eweA+srEvlYVeO/A\n0FvJciw+isAzAri18uh65BNeTVx46M8PMVxRoRhbWm9vX4S7EGuBvyz1u39bPPG+\n7uIToxE7p4BbNZP2StENyTTloXHlxYFmj14s42OxCTGXNPkFoAMYovrPACOHqVwZ\nHqXGJjeEOeGmmE8zXP3399gC5UCW1Ii406BjfETNmLBebixfQ65O96QaFwwkJtDd\nUCBGPdMh9y90cF8SnLm+/N932uc31WKGbduKtR28JBsanzgr40gzjnYQ7/nlGHXi\nZwC+uwRS9SeVw0+LntiZps89aBZI0VsqrtILMBrjEQKBgQDUn6Ng0YZSq2R4wB4j\nG3GWoAd8W6AC2f9D0jCAHB1w5fBbHSC8J2V773aTSFbMlnHxS/LSK/EA1APCe1yr\nShaxSPUoi21hqb2hDtSO4TeD5EYNx4b/r4tRRhm4Aikzjc3K5w4+UfKb01eNAqmK\n6Oa9qBYQZQKTL9u9RplEwgGrOQKBgQDM4qr8BCJe6or6jaH0S6J78Xstp+IEMgU9\nPICLq6dTNHRZyTuhLzvskIsl0K4zWqMCrNMBr7Va7oRnLP2E+z1UAaYGD2syqTep\nLOtlMJLougRtMvOSEO39hJF9rqOBJaWnfbUebdQ9Cn4r+0zHCc2uJ/+NpEHAbV8S\nqr6T5DtLzwKBgBblLcGSLkWeoQ4DmfsrzFps1wGEGEHWWY9jBcf1vxHWIMCe7VR1\nZY8n5PvNEVOsa46RIA+Tnbr6GYGKqRrkunbSpVt9UATxMzMxlp/gDotMPGLldlr3\n+yeAReqziN49ScisgrMhPd+brVTI0Zrco2QOwnl3dwSEZcQG4yAtR+K5AoGAE6xs\nSLjI6B5TbA2vkHq2xnoAnviw7kAzWpb1rPO1pHqz9W8qR6b2dRfIFMB+CbZZUsdv\nl4jcvDeNBS8/xMYvNGLYI1rVq06uZpNGozfP04MRK78pvkvb3m0dX1kmoB8SUgvz\nGVHogFgCl4yQ6cfaNS/oDRzJp4WZDHzSwfa3bucCgYEAhH83LufwFiY87JfC4kOF\n7xyJzVv1h5URXlbv0gReCzBc1V683Q9KTT/wyVik7fh1I4/s3n78mZXwToHSbii8\nXtSx6xX0UvsrI8M1BDinOCp3FFCum8WMmfQoX1z8biWxPlbnOvUffun73xOX9iQg\naxMWeX+ouzoycQM1BpJgEjU=\n-----END PRIVATE KEY-----\n",
+	"client_email": "firebase-adminsdk-a27q5@discordia-db.iam.gserviceaccount.com",
+	"client_id": "100430191495009537018",
+	"auth_uri": "https://accounts.google.com/o/oauth2/auth",
+	"token_uri": "https://oauth2.googleapis.com/token",
+	"auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+	"client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-a27q5%40discordia-db.iam.gserviceaccount.com",
+	"universe_domain": "googleapis.com"
+  }
+  
