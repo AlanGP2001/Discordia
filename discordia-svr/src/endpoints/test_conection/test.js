@@ -27,8 +27,8 @@ router.get('/consulta', async (req, res) => {
    db.ref('test').once('value', (snapshot) => {
       const data = snapshot.val();
       console.log(data);
+      res.send(data);
    });
-   res.send('consultado');
 });
 
 module.exports = router;
