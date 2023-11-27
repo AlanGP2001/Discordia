@@ -11,7 +11,6 @@ import PublicacionCreate from "./components/Publicaciones/PublicacionCreate"
 import { DataProvider } from "./components/Publicaciones/PublicacionContext"
 import Layout from "./components/Layout/Layout"
 import Comunidad from "./components/Usuarios/Comunidad"
-import { useNavigate } from 'react-router-dom';
 import RegisterPage from "./public/Auth/RegisterPage"
 
 
@@ -86,7 +85,7 @@ function App() {
                 } 
               />
 
-              <Route path="/Proyectos"     element={<Proyectos/>} />
+              <Route path="/Proyectos" element={<Proyectos/>} />
 
               <Route path="/login"     element={
                 <Layout>

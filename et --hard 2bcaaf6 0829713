@@ -1,0 +1,85 @@
+[33mcommit 7bd1683c84a3cf104b1e63d94fb3ebb1d663b795[m[33m ([m[1;36mHEAD -> [m[1;32mdesarrolloAldair[m[33m)[m
+Merge: 2bcaaf6 0829713
+Author: AldairCruz7 <aldairtusero1@gmail.com>
+Date:   Tue Nov 14 17:41:42 2023 -0600
+
+    Merge remote-tracking branch 'origin' into desarrolloAldair
+
+[33mcommit 2bcaaf6d5552c6f7c92bd86ddf156e61780fb769[m[33m ([m[1;31morigin/desarrolloAldair[m[33m)[m
+Author: AldairCruz7 <aldairtusero1@gmail.com>
+Date:   Tue Nov 14 17:39:08 2023 -0600
+
+    Listo para consumir
+
+[33mcommit 1b5fec6bf70f64445ed0e8af6e12e172eeafcfd4[m
+Author: AldairCruz7 <aldairtusero1@gmail.com>
+Date:   Thu Nov 9 16:19:37 2023 -0600
+
+    Comenzado UX
+
+[33mcommit af64ca9ef3adecb13801c4a6f1c80ab755df91e2[m
+Author: AldairCruz7 <aldairtusero1@gmail.com>
+Date:   Tue Nov 7 16:31:51 2023 -0600
+
+    creando publicaciones context
+
+[33mcommit e94ab77c7875cfc47c978ecbf5448c52f7245f21[m
+Author: AldairCruz7 <aldairtusero1@gmail.com>
+Date:   Tue Nov 7 14:09:35 2023 -0600
+
+    Falta hacer contexto para editar/eliminar
+
+[33mcommit 08297134feb3f53e46396b6ca6f6d6e0310121c5[m
+Merge: 0bd8311 a01eb28
+Author: Aldair Cruz Ortiz <112427629+AldairCruz7@users.noreply.github.com>
+Date:   Tue Nov 7 10:53:37 2023 -0600
+
+    Merge pull request #2 from AlanGP2001/desarrolloAldair
+    
+    Desarrollo aldair
+
+[33mcommit a01eb2810d7499c9eec82d18a12e97a242ffd765[m[33m ([m[1;32mdesarrollo[m[33m)[m
+Merge: fa57d8e 0873299
+Author: AldairCruz7 <aldairtusero1@gmail.com>
+Date:   Tue Nov 7 10:51:40 2023 -0600
+
+    Merge branch 'desarrollo' of github.com:AlanGP2001/Dicordia into desarrollo
+
+[33mcommit fa57d8e6613ad01195e0a5fa104b28e77a70a6f1[m
+Author: AldairCruz7 <aldairtusero1@gmail.com>
+Date:   Tue Nov 7 10:50:02 2023 -0600
+
+    Cambios en rutas dinamicas y preparacion de datos publicaciones
+
+[33mcommit 08732996fac475770be699cebdee031ac12b50a2[m
+Merge: acaf38e 0bd8311
+Author: Alan Gallardo Peñaloza <93557645+AlanGP2001@users.noreply.github.com>
+Date:   Mon Nov 6 20:49:58 2023 -0600
+
+    Merge pull request #1 from AlanGP2001/main
+    
+    Delete discordia-svr/node_modules directory
+
+[33mcommit 0bd8311f68f869b220d0b486d6fdad6faec24d67[m
+Author: Alan Gallardo Peñaloza <93557645+AlanGP2001@users.noreply.github.com>
+Date:   Mon Nov 6 20:48:53 2023 -0600
+
+    Delete discordia-svr/node_modules directory
+
+[33mcommit acaf38e88f1cb0492f081725337c0a1dadd0389b[m
+Author: Alan Gallardo Peñaloza <gallardopenalozaalan@gmail.com>
+Date:   Mon Nov 6 20:47:59 2023 -0600
+
+    gitignore
+
+[33mcommit 67c1086c9cc69de13217d456ca2001fad9c718bd[m[33m ([m[1;32mmain[m[33m)[m
+Author: Alan Gallardo Peñaloza <gallardopenalozaalan@gmail.com>
+Date:   Mon Nov 6 20:35:30 2023 -0600
+
+    first commit
+
+[33mcommit 1d0e334344b9532c4b58314ee1539d97e57358bd[m
+Author: Alan Gallardo Peñaloza <gallardopenalozaalan@gmail.com>
+Date:   Mon Nov 6 20:33:34 2023 -0600
+
+    first commit
