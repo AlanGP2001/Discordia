@@ -30,11 +30,11 @@ export default function Header() {
             current: false
         },
         {
-          to: "/Comunidad" ,
-          text: 'Comunidad',
-          private: true,
-          current: false
-      },
+            to: "/Comunidad" ,
+            text: 'Comunidad',
+            private: true,
+            current: false
+        },
         {
             to: "/Publicaciones", 
             text: 'Publicaciones',
@@ -49,12 +49,12 @@ export default function Header() {
             current: false
         },
         {
-          to: "/Registro", 
-          text: 'Registro',
-          private: false,
-          publicOnly: true,
-          current: false
-      },
+            to: "/Registro", 
+            text: 'Registro',
+            private: false,
+            publicOnly: true,
+            current: false
+        },
         {
             to: "/logout", 
             text: 'logout',

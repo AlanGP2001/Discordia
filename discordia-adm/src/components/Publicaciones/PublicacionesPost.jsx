@@ -33,6 +33,7 @@
       }
       ,[post])
       
+      
       const canDelete = auth.user?.isAdmin || auth.user?.username === post.author;
 
       // const backPublicaciones = () => {
