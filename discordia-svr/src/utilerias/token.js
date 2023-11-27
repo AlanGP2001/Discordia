@@ -7,12 +7,12 @@ const generarTokenSesion = (usuarioId) => {
 		usuarioId: usuarioId,
 		plataforma: 'Web',
 	},
-	tokenSecret,
-	{
-		audience: ['DISCORDIA'],
-		expiresIn: '5h',
-		issuer: 'DISCORDIA',
-	});
+		tokenSecret,
+		{
+			audience: ['DISCORDIA'],
+			expiresIn: '5h',
+			issuer: 'DISCORDIA',
+		});
 	return token;
 };
 
@@ -24,11 +24,7 @@ const validarToken = (req, res, next) => {
 			const decoded = jwt.verify(token, tokenSecret);
 
 			if (decoded) {
-				//if (req.body.usuarioId === decoded.usuarioId) {
-					next();
-				// } else {
-				// 	res.sendStatus(401);
-				// }
+				next();
 			} else {
 				res.sendStatus(401);
 			}
@@ -46,7 +42,7 @@ const renovarToken = (req) => {
 	const decoded = jwt.verify(token, tokenSecret);
 	//console.log(decoded);ñ
 	// eslint-disable-next-line no-constant-condition
-	if ((decoded.plataforma = 'Web')) {
+	if ((decoded.plataforma == 'Web')) {
 		token = generarTokenSesion(decoded.usuarioId);
 	}
 	//console.log(jwt.verify(token, tokenSecret));
