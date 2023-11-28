@@ -4,4 +4,5 @@ module.exports = function (app) {
     app.use('/registro', require('./registro/registro'))
     app.use(validarToken);
     app.use('/test', require('./test_conection/test'))
+    app.use('/publicacion', require('./publicacion/publicacion'))
 }
