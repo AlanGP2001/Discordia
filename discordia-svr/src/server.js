@@ -6,7 +6,6 @@ const https = require('https');
 const fs = require('fs');
 const bodyParser = require('body-parser');
 const { config } = require('./utilerias/config');
-const { db } = require('./utilerias/firebase');
 const functions = require('firebase-functions');
 
 const app = express();

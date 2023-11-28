@@ -1,5 +1,5 @@
 const express = require('express');
-const { db } = require('../../utilerias/firebase');
+const { db } = require('../../utilerias/firebase_realtime');
 const router = express.Router();
 
 router.get('/', async (req, res) => {
