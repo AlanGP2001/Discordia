@@ -5,6 +5,7 @@
     "tailwindcss": "^3.3.5"
   },
   "dependencies": {
-    "@nextui-org/button": "^2.0.26"
+    "@nextui-org/button": "^2.0.26",
+    "axios": "^1.6.2"
   }
 }

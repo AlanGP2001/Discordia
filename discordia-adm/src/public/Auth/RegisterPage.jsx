@@ -1,27 +1,35 @@
 import React from 'react'
 import { useAuth } from './auth'
-import { Navigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import logo from "../../assets/logo_transparent.png"
-
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function RegisterPage() {
-    
-    const [username, setUsername] = React.useState('')
-    
+    const navigate = useNavigate()
+    const [email, setEmail] = React.useState('')
+    const [password, setPassword] = React.useState('')
     const auth = useAuth()
-
-    const login = (e) => {
+    
+    const registrar = async(e) => {
         e.preventDefault()
-        auth.login({username})
+        try {
+            response = await auth.signUp(email, password)
+            console.log("response", response)
+           // navigate('/Login')
+
+        } catch (error) {
+          
+        }
     }
 
-    if(auth.user){
+    if(auth.user.uid){
         return <Navigate to="/Perfil"/>
     }
 
   return (
      <>
+     <ToastContainer />
        <div className="overflow-y-auto flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
@@ -35,7 +43,7 @@ export default function RegisterPage() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" onSubmit={login}>
+          <form className="space-y-6" onSubmit={registrar}>
             <div>
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                 GamerTag
@@ -46,8 +54,8 @@ export default function RegisterPage() {
                   name="email"
                   type="text"
                   autoComplete="email"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -64,8 +72,8 @@ export default function RegisterPage() {
                   name="email"
                   type="text"
                   autoComplete="email"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -85,9 +93,11 @@ export default function RegisterPage() {
                 <input
                   id="password"
                   name="password"
-                  type="password"
-                  autoComplete="current-password"
-                 
+                  type="text"
+                  autoComplete="email"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>

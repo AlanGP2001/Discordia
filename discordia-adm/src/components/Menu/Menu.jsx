@@ -109,8 +109,8 @@ export default function Header() {
                 {navigation.map((route,index) => {
 
 
-                if(route.publicOnly && auth.user) return null; 
-                if(route.private && !auth.user) return null;
+                if(route.publicOnly && auth.user.uid) return null; 
+                if(route.private && !auth.user.uid) return null;
 
                     return (
                         <NavLink

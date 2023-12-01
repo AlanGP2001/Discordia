@@ -34,7 +34,7 @@
       ,[post])
       
       
-      const canDelete = auth.user?.isAdmin || auth.user?.username === post.author;
+      const canDelete = auth.user?.isAdmin || auth.user?.uid === post.author;
 
       // const backPublicaciones = () => {
       //     navigate('/Publicaciones');
