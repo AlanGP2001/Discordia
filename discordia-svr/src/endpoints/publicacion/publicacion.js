@@ -29,8 +29,9 @@ router.post('/agregarPublicacion', async (req, res) => {
         contenido: req.body.contenido,
         tipo: req.body.tipo,
         autor: req.body.autor,
-        imgUrl: req.body.imgUrl,
         like: req.body.like,
+        // imgUrl: req.body.imgUrl,
+        // idUser: req.body.idUser,
     };
 
     const publicacionCollectionRef = collection(db, 'publicaciones');
@@ -48,7 +49,7 @@ router.put('/editar/:id', async (req, res) => {
             titulo: req.body.titulo,
             contenido: req.body.contenido,
             tipo: req.body.tipo,
-            autor: req.body.autor,
+            // autor: req.body.autor,
             imgUrl: req.body.imgUrl,
             like: req.body.like,
         };
