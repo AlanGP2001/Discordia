@@ -1,3 +1,32 @@
+
+  import axios from 'axios';
+
+
+
+  const obtenerPublicaciones = async (jwt) => {
+    const url = "https://us-central1-discordia-db.cloudfunctions.net/api/publicacion";
+  
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${jwt}`,
+      },
+    };
+  
+    try {
+      const response = await axios.get(url, config);
+      console.log('Respuesta:', response.data);
+      return response.data;
+    } catch (error) {
+      // Manejar errores
+      console.error('Error:', error);
+      throw error; // Re-lanzar el error para que pueda ser manejado en el componente que llama a esta función
+    }
+  };
+  
+  
+  
+  
   const dataPublicaciones = [
     {
       titulo: 'Evento call of duty',
@@ -13,7 +42,41 @@
       Después de introducir algunos cambios en el agente de alteración meta y un nuevo mapa, Sunset, la secuela del Capítulo Siete, el Acto Dos ahora se acerca a su final, y el cronómetro del juego muestra el 31 de octubre como su último día. La nueva ley comenzará poco después de que Riot complete una sesión de mantenimiento del servidor.`,
       author: '@macacoOficial'
     }
-];
+  ];
+
+  
+  
+  
+  
+
+  const crearPublicacion = async (data) => {
+    const urlPost = "https://us-central1-discordia-db.cloudfunctions.net/api/publicacion/agregarPublicacion";
+  
+    const postData = {
+      titulo: `${data.titulo}`,
+      contenido: `${data.contenido}`,
+      tipo: `${data.tipo}`,
+      autor: `${data.autor}`,
+    };
+  
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${data.jwt}`,
+      },
+    };
+  
+    try {
+      const response = await axios.post(urlPost, postData, config);
+      console.log('Respuesta:', response.data);
+      return response.data;
+    } catch (error) {
+      // Manejar errores
+      console.error('Error:', error);
+      throw error; // Re-lanzar el error para que pueda ser manejado en el componente que llama a esta función
+    }
+  };
+  
 
 
-export { dataPublicaciones};
+export { dataPublicaciones, crearPublicacion, obtenerPublicaciones};

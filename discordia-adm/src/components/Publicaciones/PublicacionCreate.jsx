@@ -5,22 +5,26 @@ import { useAuth } from '../../public/Auth/auth';
 import {Input,Textarea,Card, CardHeader, CardBody, CardFooter, Divider, Link, Image} from "@nextui-org/react";
 import {Button, ButtonGroup, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem} from "@nextui-org/react"
 
-export default function PublicacionCreate() {
-  const { createPost } = useData();
-  const { user  } = useAuth();
 
-  const [selectedOption, setSelectedOption] = React.useState(new Set(["merge"]));
+
+export default function PublicacionCreate() {
+  
+
+  const { createPost } = useData();
+  const { user} = useAuth();
+
+  const [selectedOption, setSelectedOption] = React.useState(new Set(["evento"]));
   const descriptionsMap = {
-    merge:
+    evento:
       "All commits from the source branch are added to the destination branch via a merge commit.",
-    squash:
+    publicacion:
       "All commits from the source branch are added to the destination branch as a single commit.",
     rebase: "All commits from the source branch are added to the destination branch individually.",
   };
 
   const labelsMap = {
-    merge: "Publicar como: Evento",
-    squash: "Publicar como: Publicación",
+    evento: "Publicar como: Evento",
+    publicacion: "Publicar como: Publicación",
     rebase: "???????",
   }
 
@@ -28,9 +32,10 @@ export default function PublicacionCreate() {
 
   const [post, setPost] = useState({
     titulo: "",
-    slug: "",
-    content: "",
-    author: user?.username,
+    tipo: "evento",
+    contenido: "",
+    autor: user?.uid,
+    jwt: user?.jwt,
   });
 
   const handleForm = (e) => {
@@ -43,6 +48,14 @@ export default function PublicacionCreate() {
    const handleClick = () => {
     // Realizar alguna acción con el valor de la opción seleccionada
     console.log(`Botón seleccionado: ${selectedOptionValue}`);
+
+    setPost({
+      ...post,
+      tipo: selectedOptionValue,
+     
+    });
+
+
   };
 
   return (
@@ -86,11 +99,11 @@ export default function PublicacionCreate() {
               base: "max-w-xs",
               input: "resize-y min-h-[40px]",
             }}
-            value={post.content}
+            value={post.contenido}
             onChange={(e) => {
               setPost({
                 ...post,
-                content: e.target.value,
+                contenido: e.target.value,
                
               });
             }}
@@ -117,11 +130,11 @@ export default function PublicacionCreate() {
           onSelectionChange={setSelectedOption}
           className="max-w-[300px]"
         >
-          <DropdownItem key="merge" description={descriptionsMap["merge"]}>
-            {labelsMap["merge"]}
+          <DropdownItem key="evento" description={descriptionsMap["evento"]}>
+            {labelsMap["evento"]}
           </DropdownItem>
-          <DropdownItem key="squash" description={descriptionsMap["squash"]}>
-            {labelsMap["squash"]}
+          <DropdownItem key="publicacion" description={descriptionsMap["publicacion"]}>
+            {labelsMap["publicacion"]}
           </DropdownItem>
           <DropdownItem key="rebase" description={descriptionsMap["rebase"]}>
             {labelsMap["rebase"]}

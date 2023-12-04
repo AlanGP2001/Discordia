@@ -14,8 +14,8 @@ function AuthProvider({ children }) {
     
     useEffect(() => {
        console.log("Se monto el componente AuthProvider")
-       console.log("contador", 1)
        restoreSession()
+      
 
     }, [])
     
@@ -48,8 +48,9 @@ function AuthProvider({ children }) {
             await AsyncStorage.setItem("dataSession",JSON.stringify({
                 uid: uid,
                 jwt: jwt,
-               
             }));
+
+          
         } catch (e) {
             // saving error
         }

@@ -63,7 +63,7 @@ function App() {
                       </AuthRoute>
                     } >
                         <Route 
-                          path=":slug"    
+                          path=":id"    
                           element={
                             <AuthRoute>
                               <PublicacionesPost/>

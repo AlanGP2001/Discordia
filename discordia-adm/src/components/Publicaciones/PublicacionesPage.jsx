@@ -7,6 +7,7 @@ import {Button,Divider} from "@nextui-org/react";
 export default function Publicaciones() {
 
   const { posts } = useData();
+  console.log("SOY POSTOTOSOTSSTST",posts)
   const navigate = useNavigate();
 
 
@@ -49,7 +50,7 @@ export default function Publicaciones() {
           {posts.map(post => 
           (
             
-            <PublicacionLink key={post.slug} post={post}/>
+            <PublicacionLink key={post.id} post={post}/>
           ))}
         </div>
 
@@ -76,14 +77,14 @@ const  PublicacionLink = ( {post} ) =>{
       />
       <div className="flex flex-col">
         <p className="text-md">{post.titulo}</p>
-        <p className="text-small text-default-500">Author: {post.author}</p>
-        <p className="text-small text-default-500">@Evento</p>
+        <p className="text-small text-default-500">Author: {post.autor}</p>
+        <p className="text-small text-default-500">@{post.tipo}</p>
       </div>
     </CardHeader>
     <Divider />
     <Divider />
     <CardFooter>
-      <Link to={`/Publicaciones/${post.slug}`}>
+      <Link to={`/Publicaciones/${post.id}`}>
         Ver publicación
       </Link>
     </CardFooter>

@@ -11,23 +11,23 @@
     
 
       const navigate = useNavigate();
-      const { slug } = useParams();
+      const { id } = useParams();
       const   auth   = useAuth(); 
       const { posts, deletePost } = useData();
       
-      let post =  posts.find(post => post.slug === slug)
+      let post =  posts.find(post => post.id === id)
 
       if (!post) {
         post ={
           author: "Publicacion no encontrada",
           titulo: "Publicacion no encontrada",
           content: "Publicacion no encontrada",
-          slug: false,
+          id: false,
         }
       }
 
       useEffect(() => {
-          if (post.slug === false) {
+          if (post.id === false) {
             navigate('/Publicaciones');
           }
       }
@@ -40,8 +40,8 @@
       //     navigate('/Publicaciones');
       // }
 
-      const deletePostHandler = (slug) => {
-        deletePost(slug, navigate);
+      const deletePostHandler = (id) => {
+        deletePost(id, navigate);
       };
     
 
@@ -53,10 +53,10 @@
     
       <Card isFooterBlurred className="w-full h-[400px] col-span-12 sm:col-span-7">
         <CardHeader className="absolute z-10 top-1 flex-col items-start">
-          <p className="text-tiny text-white/60 uppercase font-bold">@Evento</p>
+          <p className="text-tiny text-white/60 uppercase font-bold">@{post.tipo}</p>
           <h4 className="text-white/90 font-medium text-xl">{post.titulo}</h4>
           <br></br>
-          <p className="text-tiny text-white/60 uppercase font-bold">{post.content}</p>
+          <p className="text-tiny text-white/60 uppercase font-bold">{post.contenido}</p>
         
         </CardHeader>
         <Image
@@ -73,14 +73,14 @@
               src="../../../src/assets/3053381.jpg"
             />
             <div className="flex flex-col">
-              <p className="text-tiny text-white/60">Publicado: #####</p>
-              <p className="text-tiny text-white/60">{post.author}</p>
+              <p className="text-tiny text-white/60">Publicación REF: #{post.id}</p>
+              <p className="text-tiny text-white/60">{post.autor}</p>
             </div>
           </div>
         
           
           {canDelete ? (
-            <Button onClick={() => deletePostHandler(post.slug)} color="danger" variant="bordered">
+            <Button onClick={() => deletePostHandler(post.id)} color="danger" variant="bordered">
               Eliminar post
             </Button>
           ) : (
