@@ -24,19 +24,24 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/agregarPublicacion', async (req, res) => {
-    const newPublication = {
-        titulo: req.body.titulo,
-        contenido: req.body.contenido,
-        tipo: req.body.tipo,
-        autor: req.body.autor,
-        like: req.body.like,
-        // imgUrl: req.body.imgUrl,
-        // idUser: req.body.idUser,
-    };
+    try {
+        const newPublication = {
+            titulo: req.body.titulo,
+            contenido: req.body.contenido,
+            tipo: req.body.tipo,
+            autor: req.body.autor,
+            like: 0,
+        };
 
-    const publicacionCollectionRef = collection(db, 'publicaciones');
-    const docRef = await addDoc(publicacionCollectionRef, newPublication);
-    res.send(`Publicacion creado con exito ${docRef.id}`)
+        const publicacionCollectionRef = collection(db, 'publicaciones');
+        const docRef = await addDoc(publicacionCollectionRef, newPublication);
+
+        console.log(`Publicacion creado con éxito ${docRef.id}`);
+        res.send('OK');
+    } catch (error) {
+        console.error('Error al agregar la publicación:', error);
+        res.status(500).send('Error interno del servidor al agregar la publicación');
+    }
 });
 
 router.put('/editar/:id', async (req, res) => {
@@ -56,6 +61,7 @@ router.put('/editar/:id', async (req, res) => {
 
         await updateDoc(docRef, updatedData);
 
+        console.log('Publicacion actualizada correctamente');
         res.send('Publicacion actualizada correctamente');
     } catch (error) {
         console.error(error);
@@ -65,16 +71,16 @@ router.put('/editar/:id', async (req, res) => {
 
 router.delete('/eliminar/:id', async (req, res) => {
     try {
-       const publicacionCollectionRef = collection(db, 'publicaciones');
-       const docRef = doc(publicacionCollectionRef, req.params.id);
- 
-       await deleteDoc(docRef);
- 
-       res.send('Publicacion eliminada correctamente');
+        const publicacionCollectionRef = collection(db, 'publicaciones');
+        const docRef = doc(publicacionCollectionRef, req.params.id);
+
+        await deleteDoc(docRef);
+
+        res.send('Publicacion eliminada correctamente');
     } catch (error) {
-       console.error(error);
-       res.status(500).send('Error eliminando la publicacion');
+        console.error(error);
+        res.status(500).send('Error eliminando la publicacion');
     }
- });
+});
 
 module.exports = router;
