@@ -50,6 +50,8 @@
   
 
   const crearPublicacion = async (data) => {
+
+  
     const urlPost = "https://us-central1-discordia-db.cloudfunctions.net/api/publicacion/agregarPublicacion";
   
     const postData = {
@@ -78,5 +80,33 @@
   };
   
 
+  
+  const countPOST = async (data) => {
 
-export { dataPublicaciones, crearPublicacion, obtenerPublicaciones};
+  
+    const urlPost = "https://us-central1-discordia-db.cloudfunctions.net/api/publicacion/countPublicaciones";
+  
+    const postData = {
+      userId: `${data.nombre}`,
+    };
+  
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${data.jwt}`,
+      },
+    };
+  
+    try {
+      const response = await axios.post(urlPost, postData, config);
+      console.log('Respuesta:', response.data);
+      return response.data;
+    } catch (error) {
+      // Manejar errores
+      console.error('Error:', error);
+      throw error; // Re-lanzar el error para que pueda ser manejado en el componente que llama a esta función
+    }
+  };
+
+
+export { dataPublicaciones, crearPublicacion, obtenerPublicaciones, countPOST};

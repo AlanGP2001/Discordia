@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAuth } from './auth'
 import { Navigate } from 'react-router-dom'
-import logo from "../../assets/logo_transparent.png"
+import logo from "../../assets/icons8-discord-200.png"
 import { authLogin } from '../../API/AuthAPI'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

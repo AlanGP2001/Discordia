@@ -48,16 +48,9 @@ const DataProvider = ({ children }) => {
     };
 
     const createPost = async (data) => {
-
-        console.log("post creando", data)
-
         await crearPublicacion(data)
-        return
-        const temp = [...posts];
-    
-        temp.push(data);
-        setPosts(temp);
-        console.log("Se creo el post", temp)
+        const newPublicaciones = await obtenerPublicaciones(data.jwt)
+        setPosts(newPublicaciones);
         navigate('/Publicaciones');
     };
 

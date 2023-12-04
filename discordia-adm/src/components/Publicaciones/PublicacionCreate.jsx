@@ -34,7 +34,7 @@ export default function PublicacionCreate() {
     titulo: "",
     tipo: "evento",
     contenido: "",
-    autor: user?.uid,
+    autor: user?.nombre,
     jwt: user?.jwt,
   });
 

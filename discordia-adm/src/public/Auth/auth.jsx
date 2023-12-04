@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth as authFirebase } from '../../firebase';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -25,6 +25,7 @@ function AuthProvider({ children }) {
     const [user, setUser] = React.useState({
         uid: null,
         jwt: null,
+        nombre: null
     })
 
     const restoreSession = async () => {
@@ -35,7 +36,10 @@ function AuthProvider({ children }) {
                 setUser({
                     uid: datos.uid,
                     jwt: datos.jwt,
+                    nombre: datos.nombre
                 })
+
+                console.log("jwt" , datos.jwt)
             }
             console.log("datos session", getDatos)
         } catch (e) {
@@ -43,11 +47,12 @@ function AuthProvider({ children }) {
         }
     }
     
-    const startSession = async (uid, jwt) => {
+    const startSession = async (uid, jwt, nombre) => {
         try {
             await AsyncStorage.setItem("dataSession",JSON.stringify({
                 uid: uid,
                 jwt: jwt,
+                nombre: nombre
             }));
 
           
@@ -59,11 +64,15 @@ function AuthProvider({ children }) {
     const singIn = async (email, password) => {
         await signInWithEmailAndPassword(authFirebase, email, password)
         .then((userCredential) => { 
+
+            const user = userCredential.user;
+            const userName = user.displayName;
             setUser({
                 uid: userCredential.user.uid,
                 jwt: userCredential.user.accessToken,
+                nombre: userName
             })
-            startSession(userCredential.user.uid, userCredential.user.accessToken)
+            startSession(userCredential.user.uid, userCredential.user.accessToken,userName)
              toast("Sesion iniciada correctamente")
 
           })
@@ -85,24 +94,35 @@ function AuthProvider({ children }) {
     //     navigate('/Perfil')
     // }
 
-    const signUp = async (email, password) => {
+    const signUp = async (email, password, gamerTag) => {
         await createUserWithEmailAndPassword(authFirebase, email, password)
-        .then((userCredential) => { 
-            // console.log("userCredential", userCredential)
-            // console.log("userCredential.user", userCredential.user)
-            //console.log("userCredential.user.uid", userCredential.user.uid)
-            //console.log("userCredential.user.accessToken", userCredential.user.accessToken)
-            setUser({
-                uid: userCredential.user.uid,
-                jwt: userCredential.user.accessToken,
+            .then(async (userCredential) => { 
+                const user = userCredential.user;
+    
+                // Agregar información adicional al usuario recién creado (por ejemplo, nombre)
+                await updateProfile(user, {
+                    displayName: gamerTag
+                });
+    
+                // Obtener el nombre del usuario actualizado
+                const userName = user.displayName;
+                console.log("Nombre del usuario:", userName);
+    
+                setUser({
+                    uid: user.uid,
+                    jwt: user.accessToken,
+                    nombre: userName
+                });
+    
+                startSession(user.uid, user.accessToken, userName);
+                toast("Usuario registrado correctamente");
             })
-            startSession(userCredential.user.uid, userCredential.user.accessToken)
-            toast("Usuario registrado correctamente");
-          })
-          .catch((error) => {
-            toast(error.message + " " + error.code);
-          });
-    }
+            .catch((error) => {
+                console.log("error", error);
+                toast(error.message + " " + error.code);
+            });
+    };
+    
 
     const logout = () => { /* Metodo logout */
         setUser({uid: null, jwt: null})

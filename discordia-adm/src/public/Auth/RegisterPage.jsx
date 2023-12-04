@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAuth } from './auth'
 import { Navigate, useNavigate } from 'react-router-dom'
-import logo from "../../assets/logo_transparent.png"
+import logo from "../../assets/icons8-discord-200.png"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -9,12 +9,13 @@ export default function RegisterPage() {
     const navigate = useNavigate()
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
+    const [gamerTag, setGamerTag] = React.useState('')
     const auth = useAuth()
     
     const registrar = async(e) => {
         e.preventDefault()
         try {
-            response = await auth.signUp(email, password)
+            response = await auth.signUp(email, password, gamerTag)
             console.log("response", response)
            // navigate('/Login')
 
@@ -54,8 +55,8 @@ export default function RegisterPage() {
                   name="email"
                   type="text"
                   autoComplete="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={gamerTag}
+                  onChange={(e) => setGamerTag(e.target.value)}
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
