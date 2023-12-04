@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "discordia-db"
-  }
+    "default": "discordia-db",
+    "backend": "discordia-db"
+  },
+  "targets": {},
+  "etags": {}
 }

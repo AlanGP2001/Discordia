@@ -83,4 +83,36 @@ router.delete('/eliminar/:id', async (req, res) => {
     }
 });
 
+router.post('/countPublicaciones', async (req, res) => {
+    try {
+        // Obtiene el userId del cuerpo de la solicitud
+        const userId = req.body.userId;
+
+        // Verifica si se proporcionó un userId
+        if (!userId) {
+            return res.status(400).json({ error: 'Se requiere un userId en el cuerpo de la solicitud.' });
+        }
+
+        // Obtiene la referencia a la colección de publicaciones
+        const publicacionCollectionRef = collection(db, 'publicaciones');
+
+        // Crea una consulta que filtra por el ID del usuario
+        const q = query(publicacionCollectionRef, where('autor', '==', userId));
+
+        // Obtiene documentos que cumplen con la condición de la consulta
+        const querySnapshot = await getDocs(q);
+
+        // Cuenta la cantidad de documentos obtenidos (que son las publicaciones del usuario)
+        const count = querySnapshot.size;
+
+        // Envía la respuesta con el conteo
+        res.json({ count });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error al obtener el conteo de publicaciones');
+    }
+});
+
+
+
 module.exports = router;

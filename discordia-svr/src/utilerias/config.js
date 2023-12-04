@@ -4,7 +4,7 @@ try {
     config = require('/etc/discordia.json');
 } catch (error) {
     config = {
-        PUERTO: 3000,
+        PUERTO: 3001,
         EMAIL: {
 			service: 'gmail',
 			auth: {
