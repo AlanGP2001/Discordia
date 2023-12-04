@@ -1,6 +1,6 @@
 const express = require('express');
 const { db } = require('../../utilerias/firebase');
-const { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } = require("firebase/firestore");
+const { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, query , where } = require("firebase/firestore");
 const router = express.Router();
 
 router.get('/', async (req, res) => {
