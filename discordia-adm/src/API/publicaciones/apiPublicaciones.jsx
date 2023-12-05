@@ -70,7 +70,7 @@
   
     try {
       const response = await axios.post(urlPost, postData, config);
-      console.log('Respuesta:', response.data);
+      //console.log('Respuesta:', response.data);
       return response.data;
     } catch (error) {
       // Manejar errores
@@ -80,33 +80,52 @@
   };
   
 
-  
-  const countPOST = async (data) => {
+  const comunidadGET = async (jwt) => {
+    const urlPost = "https://us-central1-discordia-db.cloudfunctions.net/api/Comunidad/";
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${jwt}`,
+      },
+    };
+
+    try {
+      const response = await axios.get(urlPost, config);
+      console.log('Respuesta:', response.data);
+      return await response.data;
+    } catch (error) {
+      console.error('Error:', error);
+      throw error; // Re-lanzar el error para que pueda ser manejado en el componente que llama a esta función
+    }
+  }
 
   
+  const countPOST = async (nombre,jwt) => {
+    
     const urlPost = "https://us-central1-discordia-db.cloudfunctions.net/api/publicacion/countPublicaciones";
   
     const postData = {
-      userId: `${data.nombre}`,
+      "userId": nombre, // Sin necesidad de template string en este caso
     };
   
     const config = {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${data.jwt}`,
+        'Authorization': `Bearer ${jwt}`,
       },
     };
   
     try {
       const response = await axios.post(urlPost, postData, config);
-      console.log('Respuesta:', response.data);
-      return response.data;
+      //console.log('Respuesta:', response.data);
+      return await response.data;
     } catch (error) {
-      // Manejar errores
       console.error('Error:', error);
       throw error; // Re-lanzar el error para que pueda ser manejado en el componente que llama a esta función
     }
   };
+  
 
 
-export { dataPublicaciones, crearPublicacion, obtenerPublicaciones, countPOST};
+export { dataPublicaciones, crearPublicacion, obtenerPublicaciones, countPOST , comunidadGET};

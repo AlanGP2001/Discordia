@@ -34,9 +34,11 @@ function App() {
                   path="/Perfil" 
                   element={
                     <AuthRoute>
-                      <Layout>
-                        <Perfil/>
-                      </Layout>
+                       <DataProvider> 
+                          <Layout>
+                            <Perfil/>
+                          </Layout>
+                      </DataProvider>
                     </AuthRoute>
                   } 
                 />
@@ -44,9 +46,11 @@ function App() {
                   path="/Comunidad" 
                   element={
                     <AuthRoute>
+                      <DataProvider> 
                       <Layout>
                         <Comunidad/>
                       </Layout>
+                      </DataProvider> 
                     </AuthRoute>
                   } 
                 />
@@ -55,7 +59,7 @@ function App() {
                     path="/Publicaciones"   
                     element={
                       <AuthRoute>
-                         <DataProvider> 
+                        <DataProvider>
                             <Layout>
                                 <PublicacionesPage/>
                             </Layout>

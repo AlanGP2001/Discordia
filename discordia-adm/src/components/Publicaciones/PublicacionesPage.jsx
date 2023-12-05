@@ -1,15 +1,14 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
 import { useData } from './PublicacionContext';
 import {Card, CardHeader, CardBody, CardFooter, Image} from "@nextui-org/react";
 import {Button,Divider} from "@nextui-org/react";
 
 export default function Publicaciones() {
-
+ 
   const { posts } = useData();
   console.log("SOY POSTOTOSOTSSTST",posts)
   const navigate = useNavigate();
-
 
   return (
     <>
@@ -49,7 +48,6 @@ export default function Publicaciones() {
         <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-3  justify-items-center '>
           {posts.map(post => 
           (
-            
             <PublicacionLink key={post.id} post={post}/>
           ))}
         </div>
@@ -62,11 +60,34 @@ export default function Publicaciones() {
 }
 
 const  PublicacionLink = ( {post} ) =>{
- 
+  const [showScrollButton, setShowScrollButton] = useState(false);
+
+  // Manejar el desplazamiento y mostrar/ocultar el botón según sea necesario
+  const handleScroll = () => {
+    const scrollY = window.scrollY;
+    const showButtonThreshold = 200; // Cambia esto según tu preferencia
+
+    setShowScrollButton(scrollY > showButtonThreshold);
+  };
+
+  // Agregar un event listener al montar el componente
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    // Limpiar el event listener al desmontar el componente
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  // Función para desplazar la pantalla hacia arriba
+  const scrollToTop = () => {
+    window.scrollTo({ top: 100, behavior: 'smooth' });
+  };
 
   return(
     
-    <Card className="w-[300px] mt-10">
+  <Card className="w-[300px] mt-10">
     <CardHeader className="flex gap-3">
       <Image
         alt="nextui logo"
@@ -83,11 +104,12 @@ const  PublicacionLink = ( {post} ) =>{
     </CardHeader>
     <Divider />
     <Divider />
-    <CardFooter>
-      <Link to={`/Publicaciones/${post.id}`}>
-        Ver publicación
+      <CardFooter>
+      
+      <Link onClick={scrollToTop} to={`/Publicaciones/${post.id}`}>
+            Ver publicación
       </Link>
-    </CardFooter>
+      </CardFooter>
   </Card>
   
   )

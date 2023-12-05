@@ -1,16 +1,13 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { crearPublicacion, obtenerPublicaciones } from '../../API/publicaciones/apiPublicaciones';
+import { comunidadGET, countPOST, crearPublicacion, obtenerPublicaciones } from '../../API/publicaciones/apiPublicaciones';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../public/Auth/auth';
-
-
-
 
 const PostContext = createContext();
 
 
 const DataProvider = ({ children }) => {
-    const { user } =useAuth()
+    const { user } = useAuth()
     const jwt = user.jwt
     const navigate = useNavigate() 
     const [posts, setPosts] = useState([]);
@@ -19,16 +16,25 @@ const DataProvider = ({ children }) => {
         const obtenerDatos = async () => {
           try {
             const publicaciones = await obtenerPublicaciones(jwt);
-            console.log("publicaciones", publicaciones)
+          
             
             setPosts(publicaciones);
           } catch (error) {
             console.error('Error al obtener publicaciones:', error);
           }
         };
-    
+       
         obtenerDatos();
       }, [])
+
+
+    const getComunidad = async () => {
+        return await comunidadGET(jwt)
+    }
+
+    const getPost = async () => { 
+        return  await countPOST(user.nombre, user.jwt)
+    }
 
     const deletePost = (slug, navigate) => {
         const updatedPosts = posts.filter((item) => item.slug !== slug);
@@ -58,7 +64,9 @@ const DataProvider = ({ children }) => {
         posts,
         deletePost,
         createPost,
-        existPost
+        existPost,
+        getPost,
+        getComunidad
     }
 
     return (

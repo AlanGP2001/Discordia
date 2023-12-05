@@ -6,6 +6,12 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+
+
+/* comunidad */
+import { crearUsuarioComunidad } from '../../API/AuthAPI';
+
+
 const AuthContext = React.createContext()
 const adminList = ['Aldair','elDani','Admin'];
 
@@ -16,6 +22,7 @@ function AuthProvider({ children }) {
        console.log("Se monto el componente AuthProvider")
        restoreSession()
       
+    
 
     }, [])
     
@@ -28,6 +35,17 @@ function AuthProvider({ children }) {
         nombre: null
     })
 
+    const communityUser = async (userName, jwt, follower ) => {
+       let data ={
+            user: userName,
+            jwt: jwt,
+            followers: follower
+        }
+
+       return await crearUsuarioComunidad( data )
+    }
+
+
     const restoreSession = async () => {
         try {
             const getDatos = await AsyncStorage.getItem("dataSession");
@@ -39,7 +57,7 @@ function AuthProvider({ children }) {
                     nombre: datos.nombre
                 })
 
-                console.log("jwt" , datos.jwt)
+                //console.log("jwt" , datos.jwt)
             }
             console.log("datos session", getDatos)
         } catch (e) {
@@ -86,13 +104,7 @@ function AuthProvider({ children }) {
     }
 
 
-    // const login = ({ username }) => { /* Metodo login */
-    //     //const isAdmin = adminList.find( admin => admin === username); /* Buscamos si el usuario es admin */
-    //     setUser({username, isAdmin})
 
-    //     SessionJWT(username, isAdmin)
-    //     navigate('/Perfil')
-    // }
 
     const signUp = async (email, password, gamerTag) => {
         await createUserWithEmailAndPassword(authFirebase, email, password)
@@ -113,7 +125,8 @@ function AuthProvider({ children }) {
                     jwt: user.accessToken,
                     nombre: userName
                 });
-    
+                await communityUser(userName, user.accessToken, 0)
+
                 startSession(user.uid, user.accessToken, userName);
                 toast("Usuario registrado correctamente");
             })
@@ -136,8 +149,8 @@ function AuthProvider({ children }) {
        /* login, Metodo login */
        logout, /* Metodo logout */
        signUp, /* Metodo singUp */
-       singIn /* Metodo singIn */
-
+       singIn, /* Metodo singIn */
+       
     }
 
     return (
